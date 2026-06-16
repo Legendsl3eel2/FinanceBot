@@ -40,7 +40,7 @@ async function handler(event, client) {
 
   // สรุปรายรับรายจ่าย
   if (text === '3' || text === 'สรุป') {
-    const rows = getMonthlyTransactions(userId);
+    const rows = await getMonthlyTransactions(userId);
     const income = rows.filter(r => r.type === 'income').reduce((s, r) => s + r.amount, 0);
     const expense = rows.filter(r => r.type === 'expense').reduce((s, r) => s + r.amount, 0);
     const balance = income - expense;
